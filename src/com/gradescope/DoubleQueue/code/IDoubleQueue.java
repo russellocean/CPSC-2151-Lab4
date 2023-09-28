@@ -11,11 +11,11 @@ package com.gradescope.DoubleQueue.code;
 /**IDoubleQueueContract
  *
  *
- *@initialization Ensures:
+ *@initialization Ensures: self != null
  *
- *@defines:
+ *@defines: self: Object
  *
- *@constraints:
+ *@constraints: The queue is initialized and is empty
  *
  */
 public interface IDoubleQueue
@@ -27,11 +27,11 @@ public interface IDoubleQueue
     /**dequeueContract
      *
      *
-     *@return
+     *@return The first element in the queue
      *
-     *@pre
+     *@pre The queue is not empty
      *
-     *@post
+     *@post The first element in the queue is removed and returned
      *
      */
     public Double dequeue();
@@ -39,11 +39,11 @@ public interface IDoubleQueue
     /**lengthContract
      *
      *
-     *@return
+     *@return The amount of elements in the queue
      *
-     *@pre
+     *@pre None
      *
-     *@post
+     *@post None
      *
      */
     public int length();
@@ -51,11 +51,11 @@ public interface IDoubleQueue
     /**toStringContract
      *
      *
-     *@return
+     *@return A string representation of the queue
      *
-     *@pre
+     *@pre None
      *
-     *@post
+     *@post None
      *
      */
     public String toString();
