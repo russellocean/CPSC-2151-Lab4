@@ -1,3 +1,11 @@
+/*
+    Team Members:
+    - Nathan Goller-Deitsch
+    - Adrian Colaianni
+    - Russell Welch
+    - Eden Sharp
+ */
+
 package com.gradescope.DoubleQueue.code;
 
 import java.util.ArrayList;
