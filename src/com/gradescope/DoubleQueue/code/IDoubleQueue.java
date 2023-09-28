@@ -38,13 +38,11 @@ public interface IDoubleQueue
 
     /**lengthContract
      *
+     * Returns the number of items in the queue.
      *
-     *@return The amount of elements in the queue
-     *
-     *@pre None
-     *
-     *@post None
-     *
+     * @return The number of items in the queue.
+     * @pre None.
+     * @post result = number of items in the queue.
      */
     public int length();
 
