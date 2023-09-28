@@ -54,7 +54,7 @@ public interface IDoubleQueue
      *
      *@pre None
      *
-     *@post Nothing changes about the state of the queue
+     *@post None
      *
      */
     public String toString();
