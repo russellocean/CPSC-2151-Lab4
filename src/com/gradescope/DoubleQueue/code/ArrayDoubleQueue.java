@@ -20,7 +20,8 @@ public class ArrayDoubleQueue implements IDoubleQueue
 {
     private Double[] queue;
     private int queueMaxSize;
-    private int index;
+    private int back;
+	private int front;
 
     /**ArrayDoubleQueueConstructorContact
      * Constructor for the arrayListDouble queue.
@@ -35,7 +36,8 @@ public class ArrayDoubleQueue implements IDoubleQueue
     public ArrayDoubleQueue(int maxSize)
     {
         this.queue = new Double[maxSize];
-        this.index = 0;
+        this.back = 0;
+		this.front = 0;
         this.queueMaxSize = maxSize;
     }
 
@@ -46,15 +48,18 @@ public class ArrayDoubleQueue implements IDoubleQueue
      *
      * @pre |self| < queueMaxSize
      *
-     * @post [self = #self with val added to left-most unoccupied index] AND queueMaxSize = #queueMaxSize
+     * @post [self = #self with val added to left-most unoccupied back] AND queueMaxSize = #queueMaxSize
      *
      */
     @Override
     public void enqueue(Double val)
     {
-        if (this.index + 1 < this.queueMaxSize) {
-            this.queue[this.index++] = val;
+        if (this.front - this.back + size == 2) {
+			// Queue is full
+			return;
         }
+		this.back = (this.back + 1) % this.queueMaxSize;
+		this.queue[this.back] = val;
     }
 
     //Note: The below 3 functions intentionally do not have contracts. You do not need to add them.
@@ -62,27 +67,31 @@ public class ArrayDoubleQueue implements IDoubleQueue
     @Override
     public Double dequeue()
     {
-        if (this.index > 0) {
-            return this.queue[--this.index];
+        if (this.front - this.back == 1) {
+			// Queue is empty
+			return null;
         }
+		Double val = this.queue[this.front];
 
-        return null;
+		this.front = (this.front + 1) % this.queueMaxSize;
+
+		return val;
     }
 
     @Override
     public int length()
     {
-        return this.index;
+        return Math.abs(this.front - this.back);
     }
 
     public String toString()
     {
         String str = "";
 
-        for (int i = 0; i < index; i++) {
-            str += this.queue[i];
-            if (i != index-1) {
-                str += ", ";
+        for (int i = this.front; i != this.back; i = (i + 1) % this.queueMaxSize) {
+            str += "[" + this.queue[i] + "]";
+            if (i != this.back-1) {
+                str += " ";
             }
         }
 
