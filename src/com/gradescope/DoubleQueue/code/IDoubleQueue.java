@@ -48,7 +48,7 @@ public interface IDoubleQueue
 
     /**toStringContract
      *
-     * can be used for example to print the status of the queue to the command line.
+     * Print the status of the queue to the command line.
      *
      *@return representation of the queue as a string
      *
