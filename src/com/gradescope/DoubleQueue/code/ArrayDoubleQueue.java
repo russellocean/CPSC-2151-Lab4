@@ -36,7 +36,7 @@ public class ArrayDoubleQueue implements IDoubleQueue
     public ArrayDoubleQueue(int maxSize)
     {
         this.queue = new Double[maxSize];
-        this.back = 0;
+        this.back = maxSize-1;
 		this.front = 0;
         this.queueMaxSize = maxSize;
     }
@@ -54,7 +54,7 @@ public class ArrayDoubleQueue implements IDoubleQueue
     @Override
     public void enqueue(Double val)
     {
-        if (this.front - this.back + size == 2) {
+        if (this.front - this.back + this.queueMaxSize == 2) {
 			// Queue is full
 			return;
         }
